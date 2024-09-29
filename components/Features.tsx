@@ -48,12 +48,7 @@ const featuresData = [
 ];
 
 const Features = () => {
-  const [index, setIndex] = useState(0);
   const [imgIndex, setImgIndex] = useState(0);
-
-  useEffect(() => {
-    setImgIndex(index);
-  }, [index]);
 
   return (
     <section className="text-white pt-32 relative">
@@ -61,7 +56,7 @@ const Features = () => {
         <div className="flex gap-16">
           {/* img */}
           <motion.div
-            key={featuresData[index].imgSrc}
+            key={featuresData[imgIndex].imgSrc}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, ease: [0.6, -0.05, 0.01, 0.99], delay: 0.2 }}
@@ -69,7 +64,7 @@ const Features = () => {
           >
             <div className="relative w-full h-full">
               <Image
-                src={featuresData[index].imgSrc}
+                src={featuresData[imgIndex].imgSrc}
                 fill
                 alt=""
                 className="h-full object-contain"
@@ -80,7 +75,7 @@ const Features = () => {
           <div className="flex-1 flex flex-col gap-24">
             {featuresData.map((item, itemIndex) => (
               <motion.div
-                onViewportEnter={() => setIndex(itemIndex)}
+                onViewportEnter={() => setImgIndex(itemIndex)}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ amount: "all" }}
